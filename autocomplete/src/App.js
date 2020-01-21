@@ -7,6 +7,16 @@ class App extends Component {
     super(props);
     this.state = {
       expanded: false,
+      options: [
+        'Oakland, CA',
+        'Berkeley, CA',
+        'San Francisco, CA',
+        'San Mateo, CA',
+        'San Jose, CA',
+        'Los Angeles, CA',
+        'San Diego, CA',
+        'Fremont, CA'
+      ] //example data 
     }
   };
 
@@ -18,7 +28,7 @@ class App extends Component {
   };
 
   render() {
-    const { expanded } = this.state; 
+    const { expanded, options } = this.state; 
     let className = 'slider-button';
     if (expanded) {
       className = 'slider-button-transition';
@@ -26,7 +36,7 @@ class App extends Component {
     return(
       <div className="slider">
         <button className={className} onClick={() => this.renderInputBox()}>Quote in 60 Seconds</button>
-        {expanded && (<Autocomplete />)}
+        {expanded && (<Autocomplete options={options} />)}
       </div>
     );
   }
